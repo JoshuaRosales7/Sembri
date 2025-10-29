@@ -19,9 +19,8 @@
 
 <br>
 
-[![Demo en Vivo](https://img.shields.io/badge/🚀_Demo_en_Vivo-00C853?style=for-the-badge&logoColor=white)](https://sembri.vercel.app)
+[![Demo en Vivo](https://img.shields.io/badge/🚀_Demo_en_Vivo-00C853?style=for-the-badge&logoColor=white)](https://sembri.netlify.app/)
 [![Documentación](https://img.shields.io/badge/📚_Documentación-2196F3?style=for-the-badge&logoColor=white)](https://docs.sembri.app)
-[![GitHub](https://img.shields.io/badge/⭐_GitHub-181717?style=for-the-badge&logo=github&logoColor=white)](https://github.com/tuusuario/sembri)
 
 <br>
 
