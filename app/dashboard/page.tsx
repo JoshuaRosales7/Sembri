@@ -14,24 +14,28 @@ export default async function DashboardPage() {
     redirect("/auth/login")
   }
 
-  // Fetch user profile
-  const { data: profile } = await supabase.from("profiles").select("*").eq("id", user.id).single()
+  // Perfil del usuario
+  const { data: profile } = await supabase
+    .from("profiles")
+    .select("*")
+    .eq("id", user.id)
+    .single()
 
-  // Fetch user's plots
+  // Parcelas
   const { data: plots } = await supabase
     .from("plots")
     .select("*")
     .eq("farmer_id", user.id)
     .order("created_at", { ascending: false })
 
-  // Fetch user's loans
+  // Préstamos
   const { data: loans } = await supabase
     .from("loans")
     .select("*")
     .eq("farmer_id", user.id)
     .order("created_at", { ascending: false })
 
-  // Fetch recommendations
+  // Recomendaciones
   const { data: recommendations } = await supabase
     .from("recommendations")
     .select("*, plots(name)")
@@ -42,7 +46,11 @@ export default async function DashboardPage() {
 
   return (
     <DashboardLayout user={user} profile={profile}>
-      <DashboardOverview plots={plots || []} loans={loans || []} recommendations={recommendations || []} />
+      <DashboardOverview
+        plots={plots || []}
+        loans={loans || []}
+        recommendations={recommendations || []}
+      />
     </DashboardLayout>
   )
 }

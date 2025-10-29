@@ -15,6 +15,7 @@ import {
   Menu,
   X,
   Sprout,
+  Crown,
 } from "lucide-react"
 import Link from "next/link"
 
@@ -35,7 +36,7 @@ export default function DashboardLayout({ children, user, profile }: DashboardLa
     router.push("/")
   }
 
-  // 🧭 Navegación principal del usuario
+  // 🧭 Navegación principal
   const navItems = [
     { href: "/dashboard", icon: LayoutDashboard, label: "Resumen" },
     { href: "/dashboard/plots", icon: Map, label: "Mis Parcelas" },
@@ -45,8 +46,8 @@ export default function DashboardLayout({ children, user, profile }: DashboardLa
   ]
 
   return (
-    <div className="flex h-screen bg-gray-50 text-gray-800">
-      {/* Fondo oscuro en móvil */}
+    <div className="flex h-screen bg-gray-100 text-gray-800">
+      {/* Fondo oscuro (modo móvil) */}
       {sidebarOpen && (
         <div
           className="fixed inset-0 bg-black/40 z-40 lg:hidden"
@@ -54,15 +55,15 @@ export default function DashboardLayout({ children, user, profile }: DashboardLa
         />
       )}
 
-      {/* 📋 Barra lateral */}
+      {/* 📋 Sidebar */}
       <aside
-        className={`fixed lg:static inset-y-0 left-0 z-50 w-64 bg-white border-r border-gray-200
+        className={`fixed lg:static inset-y-0 left-0 z-50 w-64 bg-white border-r border-gray-200 shadow-md
           transform transition-transform duration-200 ease-in-out
           ${sidebarOpen ? "translate-x-0" : "-translate-x-full lg:translate-x-0"}`}
       >
         <div className="flex flex-col h-full">
-          {/* Logo superior */}
-          <div className="flex items-center justify-between h-16 px-6 border-b border-gray-200">
+          {/* Logo */}
+          <div className="flex items-center justify-between h-16 px-6 border-b border-gray-200 bg-white">
             <div className="flex items-center gap-2">
               <Sprout className="h-8 w-8 text-green-600" />
               <span className="text-xl font-bold text-green-800">Sembri</span>
@@ -76,12 +77,12 @@ export default function DashboardLayout({ children, user, profile }: DashboardLa
             </button>
           </div>
 
-          {/* Información del usuario */}
-          <div className="px-6 py-4 border-b border-gray-200">
-            <p className="text-sm font-medium text-gray-900">
+          {/* Usuario */}
+          <div className="px-6 py-4 border-b border-gray-200 bg-gray-50">
+            <p className="text-sm font-semibold text-gray-900">
               {profile?.full_name || "Usuario"}
             </p>
-            <p className="text-xs text-gray-500">{user?.email}</p>
+            <p className="text-xs text-gray-500 truncate">{user?.email}</p>
             <span className="inline-block mt-2 px-2 py-1 text-xs font-medium bg-green-100 text-green-700 rounded">
               {profile?.role || "Agricultor"}
             </span>
@@ -108,8 +109,8 @@ export default function DashboardLayout({ children, user, profile }: DashboardLa
             })}
           </nav>
 
-          {/* Cerrar sesión */}
-          <div className="p-4 border-t border-gray-200">
+          {/* Logout */}
+          <div className="p-4 border-t border-gray-200 bg-white">
             <Button
               variant="ghost"
               className="w-full justify-start text-red-600 hover:text-red-700 hover:bg-red-50"
@@ -122,21 +123,31 @@ export default function DashboardLayout({ children, user, profile }: DashboardLa
         </div>
       </aside>
 
-      {/* 🧩 Contenido principal */}
+      {/* 🧩 Contenido */}
       <div className="flex-1 flex flex-col overflow-hidden">
-        {/* Barra superior */}
-        <header className="h-16 bg-white border-b border-gray-200 flex items-center px-4 lg:px-6">
-          <button
-            className="lg:hidden mr-4"
-            onClick={() => setSidebarOpen(true)}
-            aria-label="Abrir menú"
-          >
-            <Menu className="h-6 w-6 text-gray-600" />
-          </button>
-          <h1 className="text-lg sm:text-xl font-semibold text-gray-900">
-            {navItems.find((item) => item.href === pathname)?.label ||
-              "Panel de Control"}
-          </h1>
+        {/* Header superior */}
+        <header className="h-16 bg-white border-b border-gray-200 flex items-center justify-between px-4 lg:px-8 shadow-sm">
+          <div className="flex items-center">
+            <button
+              className="lg:hidden mr-4"
+              onClick={() => setSidebarOpen(true)}
+              aria-label="Abrir menú"
+            >
+              <Menu className="h-6 w-6 text-gray-600" />
+            </button>
+            <h1 className="text-lg sm:text-xl font-semibold text-gray-900">
+              {navItems.find((item) => item.href === pathname)?.label ||
+                "Panel de Control"}
+            </h1>
+          </div>
+
+          {/* Botón de cambio a Admin */}
+          <Link href="/dashboard/admin">
+            <Button className="flex items-center gap-2 bg-green-600 hover:bg-green-700 text-white shadow-md">
+              <Crown className="h-4 w-4" />
+              Panel Admin
+            </Button>
+          </Link>
         </header>
 
         {/* Contenido dinámico */}
