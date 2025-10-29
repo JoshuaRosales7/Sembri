@@ -1,3 +1,5 @@
+export const runtime = "nodejs"
+
 import { redirect } from "next/navigation"
 import { createClient } from "@/lib/server"
 import AdminLayout from "@/components/admin-layout"
@@ -15,14 +17,12 @@ export default async function AdminFarmersPage() {
     redirect("/auth/login")
   }
 
-  // 👇 aquí el fix: usa user!.id para indicar que no será null
   const { data: profile } = await supabase
     .from("profiles")
     .select("*")
     .eq("id", user!.id)
     .single()
 
-  // Estadísticas simuladas (o datos reales)
   const { data: farmers } = await supabase
     .from("profiles")
     .select(`
