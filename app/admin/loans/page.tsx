@@ -1,3 +1,4 @@
+export const runtime = "nodejs"
 import { redirect } from "next/navigation"
 import { createClient } from "@/lib/server"
 import AdminLayout from "@/components/admin-layout"

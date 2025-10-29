@@ -1,5 +1,5 @@
 "use client"
-
+export const runtime = "nodejs"
 import type React from "react"
 
 import { createClient } from "@/lib/client"

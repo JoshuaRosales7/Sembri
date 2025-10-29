@@ -1,3 +1,4 @@
+export const runtime = "nodejs"
 import { redirect } from "next/navigation"
 import { createClient } from "@/lib/server"
 import DashboardLayout from "@/components/dashboard-layout"
