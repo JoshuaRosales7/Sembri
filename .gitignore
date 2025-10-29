@@ -1,8 +1,8 @@
-# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
-
-# dependencies
-/node_modules
-/.pnp
+# ================================
+# 📦 DEPENDENCIAS
+# ================================
+node_modules/
+.pnp
 .pnp.*
 .yarn/*
 !.yarn/patches
@@ -10,32 +10,89 @@
 !.yarn/releases
 !.yarn/versions
 
-# testing
-/coverage
+# ================================
+# 🧪 TESTING
+# ================================
+coverage/
 
-# next.js
-/.next/
-/out/
+# ================================
+# ⚙️ NEXT.JS
+# ================================
+.next/
+out/
+build/
+.next/static/chunks/
+.next/cache/
 
-# production
-/build
+# ================================
+# 🔥 FIREBASE
+# ================================
+.firebase/
+firebase-debug.log
+firebase-debug.*.log
+.firebaserc
+functions/node_modules/
+functions/.next/
+functions/lib/
+functions/.cache/
+functions/.firebase/
 
-# misc
+# ================================
+# 💾 PRODUCCIÓN
+# ================================
+dist/
+build/
+tmp/
+temp/
+.cache/
+
+# ================================
+# 🧰 MISC
+# ================================
 .DS_Store
+Thumbs.db
 *.pem
+*.log
+*.pid
+*.seed
+*.pid.lock
+*.csv
 
-# debug
+# ================================
+# 🧑‍💻 ENTORNOS Y CONFIGURACIÓN
+# ================================
+.env
+.env.*
+!.env.example
+
+# ================================
+# 🚀 VERCEL
+# ================================
+.vercel/
+.vercel_build_output/
+.vercelignore
+
+# ================================
+# 🧩 TYPESCRIPT
+# ================================
+*.tsbuildinfo
+next-env.d.ts
+
+# ================================
+# 🪣 EDITORES Y SISTEMA
+# ================================
+.vscode/
+.idea/
+*.swp
+*.swo
+*.bak
+*.tmp
+
+# ================================
+# 🪵 DEBUG / LOGS
+# ================================
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+pnpm-debug.log*
 .pnpm-debug.log*
-
-# env files (can opt-in for committing if needed)
-.env*
-
-# vercel
-.vercel
-
-# typescript
-*.tsbuildinfo
-next-env.d.ts
